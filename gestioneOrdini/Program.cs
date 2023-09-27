@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.Data;
+
+
+
 namespace gestioneOrdini
 {
     internal class Program
@@ -123,38 +126,47 @@ namespace gestioneOrdini
                 }
             }
             Console.Clear();
-            Console.WriteLine("(1) Visualizza tutti gli ordini");
-            Console.WriteLine("(2) Visualizza in dettaglio un ordine");
-            Console.WriteLine("(3) Crea un ordine");
-            Console.WriteLine("(4) Esci");
-            Console.Write("\nScegli una di queste opzioni: ");
-            string scelta = Console.ReadLine();
-            
-            switch (scelta)
+
+            Console.WriteLine("Accesso Riuscito!\n");
+            bool isRunning = true;
+            while (isRunning)
             {
-                case "1":
-                    query1(con);
-                    break;
+                Console.WriteLine("(1) Visualizza tutti gli ordini");
+                Console.WriteLine("(2) Visualizza in dettaglio un ordine");
+                Console.WriteLine("(3) Crea un ordine");
+                Console.WriteLine("(4) Esci");
+                Console.Write("\nScegli una di queste opzioni: ");
+                string scelta = Console.ReadLine();
 
-                case "2":
-                    Console.Write("Inserisci l'ID dell'ordine per avere tutti i dettagli: ");
-                    string ID = Console.ReadLine();
-                    query2(con, ID);
+                switch (scelta)
+                {
+                    case "1":
+                        query1(con);
+                        break;
 
-                    break; 
-                
-                case "3":
-                    break; 
-                
-                case "4":
-                    break;
+                    case "2":
+                        Console.Write("Inserisci l'ID dell'ordine per avere tutti i dettagli: ");
+                        string ID = Console.ReadLine();
+                        query2(con, ID);
 
-                default: Console.WriteLine("hai sbagliato numero!");
-                    break;
+                        break;
+
+                    case "3":
+                        break;
+
+                    case "4":
+                        isRunning = false;
+                        break;
+
+                    default:
+                        Console.WriteLine("hai sbagliato numero!");
+                        break;
+                }
             }
-            Console.ReadLine();
-            
-       
+            Console.Clear();
+            Console.WriteLine("Chiusura del programma...");
+
+
         } 
     }
 }
